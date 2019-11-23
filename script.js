@@ -1,16 +1,15 @@
 'use strict';
 
 // ////Constructor of Products
-// ////Assigns name of product and image file 
-// function Product(name, path) {
+////Assigns name of product and image file 
+function Product(name, path) {
 
-//   this.name = name;
-//   this.path = path;
+  this.name = name;
+  this.path = path;
 
-// }
+}
 
 //// array to put image paths in to choose from them randomly
-alert('img/bag.jpg');
 var imagePaths = [];
 imagePaths[0] = 'img/bag.jpg';
 imagePaths[1] = 'img/banana.jpg';
@@ -33,24 +32,17 @@ imagePaths[17] = 'img/usb.gif';
 imagePaths[18] = 'img/water-can.jpg';
 imagePaths[19] = 'img/wine-glass.jpg';
 
-alert(imagePaths.length);
-
 var display = document.getElementById('display');
 
-for (var y = 0; y < imagePaths.length; y++){
+for (var y = 0; y < 3; y++){
   var imageHolder = document.createElement('img');
-  imageHolder.src = imagePaths[y];
+  var rand = Math.ceil(Math.random() * imagePaths.length);
+  imageHolder.src = imagePaths[rand];
   display.appendChild(imageHolder);
+  imageHolder.style.height = '15%';
+  imageHolder.style.width = '15%';
+  imageHolder.style.marginRight = '4%';
+  imageHolder.style.textAlign = 'center';
 
 }
 
-
-
-
-
-for (var i = 0; i < 20; i++)
-{ var div = document.createElement('div');
-  div.textContent = imagePaths[i];
-  display.appendChild(div);
-  
-}
