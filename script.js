@@ -6,7 +6,8 @@ function Product(name, path) {
 
   this.name = name;
   this.path = path;
-
+  var numClicked = 0;
+///////FIX ADDING NUMBER TO numClicked
 }
 
 //// array to put image paths in to choose from them randomly
@@ -33,8 +34,23 @@ imagePaths[18] = 'img/water-can.jpg';
 imagePaths[19] = 'img/wine-glass.jpg';
 
 var display = document.getElementById('display');
+function displayThreeItems (){
+  for (var y = 0; y < 3; y++){
+    var imageHolder = document.createElement('img');
+    var rand = Math.ceil(Math.random() * imagePaths.length);
+    imageHolder.src = imagePaths[rand];
+    display.appendChild(imageHolder);
+    imageHolder.style.height = '15%';
+    imageHolder.style.width = '15%';
+    imageHolder.style.marginRight = '4%';
+    imageHolder.style.marginLeft = '10%';
+    imageHolder.style.textAlign = 'center';
 
-for (var y = 0; y < 3; y++){
+  }
+}
+displayThreeItems();
+var eventP = document.getElementById('display');
+eventP.addEventListener("click", function () { for (var y = 0; y < 3; y++){
   var imageHolder = document.createElement('img');
   var rand = Math.ceil(Math.random() * imagePaths.length);
   imageHolder.src = imagePaths[rand];
@@ -42,7 +58,10 @@ for (var y = 0; y < 3; y++){
   imageHolder.style.height = '15%';
   imageHolder.style.width = '15%';
   imageHolder.style.marginRight = '4%';
+  imageHolder.style.marginLeft = '10%';
   imageHolder.style.textAlign = 'center';
-
+  Product.numClicked ++;
 }
+// alert(parseInt(Product.numClicked));
+}, false);
 
