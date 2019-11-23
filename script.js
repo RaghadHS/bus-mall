@@ -38,7 +38,10 @@ alert(imagePaths.length);
 var display = document.getElementById('display');
 
 for (var y = 0; y < imagePaths.length; y++){
-var imageHolder = document.createElement('img');
+  var imageHolder = document.createElement('img');
+  imageHolder.src = imagePaths[y];
+  display.appendChild(imageHolder);
+
 }
 
 
