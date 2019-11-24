@@ -89,7 +89,27 @@ header
     border-color: lime;
 }
 
-#productIMG
+#right
+{
+    height: 15%;
+    width: 15%;
+    margin-left: 10%;
+    margin-right: 4%;
+    text-align: center;
+
+}
+
+#middle
+{
+    height: 15%;
+    width: 15%;
+    margin-left: 10%;
+    margin-right: 4%;
+    text-align: center;
+
+}
+
+#left
 {
     height: 15%;
     width: 15%;
