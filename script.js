@@ -1,67 +1,103 @@
 'use strict';
+//// array to put image paths in to choose from them randomly
+  
+var imagePaths = ['img/bag.jpg',
+  'img/banana.jpg',
+  'img/bathroom.jpg',
+  'img/boots.jpg',
+  'img/breakfast.jpg',
+  'img/bubblegum.jpg',
+  'img/chair.jpg',
+  'img/cthulhu.jpg',
+  'img/dog-duck.jpg',
+  'img/dragon.jpg',
+  'img/pen.jpg',
+  'img/pet-sweep.jpg',
+  'img/scissors.jpg',
+  'img/shark.jpg',
+  'img/sweep.png',
+  'img/tauntaun.jpg',
+  'img/unicorn.jpg',
+  'img/usb.gif',
+  'img/water-can.jpg',
+  'img/wine-glass.jpg'];
+alert(imagePaths.length);
 
 // ////Constructor of Products
 ////Assigns name of product and image file 
-function Product(name, path) {
+function Product() {
 
-  this.name = name;
-  this.path = path;
+  var name;
+  var path;
+
   var numClicked = 0;
-///////FIX ADDING NUMBER TO numClicked
+  ///////FIX ADDING NUMBER TO numClicked
+
+  this.displayThreeItems();
 }
 
-//// array to put image paths in to choose from them randomly
-var imagePaths = [];
-imagePaths[0] = 'img/bag.jpg';
-imagePaths[1] = 'img/banana.jpg';
-imagePaths[2] = 'img/bathroom.jpg';
-imagePaths[3] = 'img/boots.jpg';
-imagePaths[4] = 'img/breakfast.jpg';
-imagePaths[5] = 'img/bubblegum.jpg';
-imagePaths[6] = 'img/chair.jpg';
-imagePaths[7] = 'img/cthulhu.jpg';
-imagePaths[8] = 'img/dog-duck.jpg';
-imagePaths[9] = 'img/dragon.jpg';
-imagePaths[10] = 'img/pen.jpg';
-imagePaths[11] = 'img/pet-sweep.jpg';
-imagePaths[12] = 'img/scissors.jpg';
-imagePaths[13] = 'img/shark.jpg';
-imagePaths[14] = 'img/sweep.png';
-imagePaths[15] = 'img/tauntaun.jpg';
-imagePaths[16] = 'img/unicorn.jpg';
-imagePaths[17] = 'img/usb.gif';
-imagePaths[18] = 'img/water-can.jpg';
-imagePaths[19] = 'img/wine-glass.jpg';
 
-var display = document.getElementById('display');
-function displayThreeItems (){
+
+Product.prototype.displayThreeItems = function(){
+  var display = document.getElementById('display');
+  var repeatArray = [];
   for (var y = 0; y < 3; y++){
     var imageHolder = document.createElement('img');
     var rand = Math.ceil(Math.random() * imagePaths.length);
     imageHolder.src = imagePaths[rand];
+    this.path = imagePaths[rand];
     display.appendChild(imageHolder);
-    imageHolder.style.height = '15%';
-    imageHolder.style.width = '15%';
-    imageHolder.style.marginRight = '4%';
-    imageHolder.style.marginLeft = '10%';
-    imageHolder.style.textAlign = 'center';
+    imageHolder.setAttribute('id', 'productIMG');
+    repeatArray[y] = this.path;
+    if (y === 1)
+    {
+      if (repeatArray[1] === repeatArray[0]){
+        rand = Math.ceil(Math.random() * imagePaths.length);
+        imageHolder.src = imagePaths[rand];
+        this.path = imagePaths[rand];
+        display.appendChild(imageHolder);
+        imageHolder.setAttribute('id', 'productIMG');
+      }
+
+    }
+
+    if (y === 2)
+    {
+      if (repeatArray[2] === repeatArray[0]){
+        rand = Math.ceil(Math.random() * imagePaths.length);
+        imageHolder.src = imagePaths[rand];
+        this.path = imagePaths[rand];
+        display.appendChild(imageHolder);
+        imageHolder.setAttribute('id', 'productIMG');
+      }
+
+      if (repeatArray[2] === repeatArray[1]){
+        rand = Math.ceil(Math.random() * imagePaths.length);
+        imageHolder.src = imagePaths[rand];
+        this.path = imagePaths[rand];
+        display.appendChild(imageHolder);
+        imageHolder.setAttribute('id', 'productIMG');
+      }
+    }
 
   }
-}
-displayThreeItems();
-var eventP = document.getElementById('display');
-eventP.addEventListener("click", function () { for (var y = 0; y < 3; y++){
-  var imageHolder = document.createElement('img');
-  var rand = Math.ceil(Math.random() * imagePaths.length);
-  imageHolder.src = imagePaths[rand];
-  display.appendChild(imageHolder);
-  imageHolder.style.height = '15%';
-  imageHolder.style.width = '15%';
-  imageHolder.style.marginRight = '4%';
-  imageHolder.style.marginLeft = '10%';
-  imageHolder.style.textAlign = 'center';
-  Product.numClicked ++;
-}
-// alert(parseInt(Product.numClicked));
-}, false);
+};
+
+
+// displayThreeItems();
+// var eventP = document.getElementById('display');
+// eventP.addEventListener("click", function () { for (var y = 0; y < 3; y++){
+//   var imageHolder = document.createElement('img');
+//   var rand = Math.ceil(Math.random() * imagePaths.length);
+//   imageHolder.src = imagePaths[rand];
+//   display.appendChild(imageHolder);
+//   imageHolder.style.height = '15%';
+//   imageHolder.style.width = '15%';
+//   imageHolder.style.marginRight = '4%';
+//   imageHolder.style.marginLeft = '10%';
+//   imageHolder.style.textAlign = 'center';
+//   Product.numClicked ++;
+// }
+// // alert(parseInt(Product.numClicked));
+// }, false);
 
