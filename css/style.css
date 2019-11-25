@@ -66,6 +66,9 @@ header
     
    
 }
+nav a{
+    text-decoration: none;
+}
 
 #nav :hover
 {
