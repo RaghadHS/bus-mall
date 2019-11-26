@@ -34,7 +34,7 @@ body
     font-size: 120px;
     text-align: center;
     padding: 20px;
-    
+    color: lightgoldenrodyellow;
 }
 
 main
@@ -55,6 +55,7 @@ header
     background-color: lightgreen;
     margin-bottom: 5px;
     text-decoration: none;
+    
 }
 
 #welcomeMsg
@@ -159,6 +160,8 @@ nav a{
     border-color: lightgreen;
     font-size: 40px;
     font-weight: bold;
+    color: lightgoldenrodyellow;
+    
 
 }
 
