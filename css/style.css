@@ -1,7 +1,8 @@
 body
 {
+    background-image: url(http://getwallpapers.com/wallpaper/full/f/a/e/35756.jpg);
     /* margin-left: 130px; */
-    background-color: lightyellow;
+    
     font-family: 'Lexend Tera', sans-serif;
     margin-right: 50px;
     margin-left: 50px;
@@ -36,8 +37,19 @@ body
     
 }
 
+main
+{
+    opacity: 0.9;
+    border-radius: 250px;
+    background-color: lightgoldenrodyellow;
+    padding-bottom: 150px;
+    padding-top: 90px;
+    margin-bottom: 0px;
+    
+}
 header
 {
+    opacity: 1;
     margin-top: 2px;
     border-radius: 300px;
     background-color: lightgreen;
@@ -47,10 +59,12 @@ header
 
 #welcomeMsg
 {
-
+    border-style: outset;
+    border-color: lightgreen;
     margin-right: 10%;
     margin-left: 10%;
     font-size: 40px;
+    padding: 20px;
 }
 
 #nav
@@ -94,8 +108,11 @@ nav a{
 
 #right
 {
-    height: 15%;
-    width: 15%;
+    opacity: 1;
+    border-color: lightgreen;
+    border-style: outset;
+    height: 195px;
+    width: 175px;
     margin-left: 10%;
     margin-right: 4%;
     text-align: center;
@@ -104,8 +121,11 @@ nav a{
 
 #middle
 {
-    height: 15%;
-    width: 15%;
+    opacity: 1;
+    border-color: lightgreen;
+    border-style: outset;
+    height: 195px;
+    width: 175px;
     margin-left: 10%;
     margin-right: 4%;
     text-align: center;
@@ -114,8 +134,11 @@ nav a{
 
 #left
 {
-    height: 15%;
-    width: 15%;
+    opacity: 1;
+    border-color: lightgreen;
+    border-style: outset;
+    height: 195px;
+    width: 175px;
     margin-left: 10%;
     margin-right: 4%;
     text-align: center;
@@ -123,11 +146,13 @@ nav a{
 }
 #prod
 {
-    margin-right: 1230px;
+    margin-left:50px ;
+    margin-right: 1190px;
+    margin-bottom: 100px;
     background-color: lightgreen;
     border-radius: 200px;
     padding-left: 50px;
-    padding-right: 40px;
+    padding-right: 50px;
     padding-top: 40px;
     padding-bottom: 40px;
     border-style: solid;
@@ -140,6 +165,7 @@ nav a{
 footer
 {
 background-color: lightgreen;
+opacity: 0.9;
 border-radius: 200px;
 text-align: center;
 padding-bottom: 10px;
