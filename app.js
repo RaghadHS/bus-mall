@@ -2,6 +2,7 @@
 //////Counter to count the numbber of time the imgaes are displayed
 var imgCount = 0;
 
+
 //// array to put image paths in to choose from them randomly
 var imagePaths = ['img/bag.jpg',
   'img/banana.jpg',
@@ -23,12 +24,28 @@ var imagePaths = ['img/bag.jpg',
   'img/usb.gif',
   'img/water-can.jpg',
   'img/wine-glass.jpg'];
-
+  
 //////array for names of images
 var names = ['bag', 'banana', 'bathroom', 'boots', 'breakfast',
   'bubblegum', 'chair', 'cthulhu', 'dog-duck', 'dragon', 'pen', 'pet-sweep', 
   'scissors', 'shark' , 'sweep', 'tauntaun', 'unicorn','usb', 'water-can', 'wine-glass'];
+  /////// Array for Number of Views
+  
+var numViews = [];
+  
+for (var num = 0 ; num < names.length ; num++)
+{
+  numViews[num] = 0;
+}
+////////Array for number of times clicked
+  
+var numClicks = [];
+  
+for (var num2 = 0 ; num2 < names.length ; num2++)
+{
+  numClicks[num2] = 0;
 
+}
 ////////Try to get initial images
 var right = Math.ceil(Math.random() * imagePaths.length - 1);
 var middle = Math.ceil(Math.random() * imagePaths.length - 1);
@@ -41,10 +58,6 @@ function Product(names, path) {
   this.productName = names;
   this.productPath = path;
 
-  this.views ++;
-  this.numClicked ++;
-
-  // this.eventListen();
 }
 
 
@@ -63,7 +76,18 @@ function displayThreeItems(){
     middle = Math.ceil(Math.random() * imagePaths.length - 1);
     left = Math.ceil(Math.random() * imagePaths.length - 1);
 
+
+    // Product(names[right], imagePaths[right]).views++;
+
   }
+
+  numViews[right]++;
+  numViews[middle]++;
+  numViews[left]++;
+
+  // console.log(numViews[right]);
+  // console.log(numViews[middle]);
+  // console.log(numViews[left]);
 
   var rightImg = document.getElementById('right');
   rightImg.setAttribute('src', imagePaths[right]);
@@ -76,6 +100,8 @@ function displayThreeItems(){
   var leftImg = document.getElementById('left');
   leftImg.setAttribute('src', imagePaths[left]);
   leftImg.setAttribute('alt', imagePaths[left]);
+  console.log(rightImg);
+
 };
 
 
@@ -95,11 +121,19 @@ var rightListener = document.getElementById('right');
 
 function clicking (){
 
+  imgCount++;
+  console.log('imgCount ' , imgCount);
+  // if (imgCount === 1)
+  // {
+  //   removeListen();
+
+  // }
   
   ///////Event Listener for the Right Image
   rightListener.addEventListener('click', function(){
     new Product(names[right], imagePaths[right]);
     displayThreeItems();
+    numClicks[right]++;
   
   });
 
@@ -109,6 +143,7 @@ function clicking (){
 
     new Product(names[middle], imagePaths[middle]);
     displayThreeItems();
+    numClicks[middle]++;
 
   });
 
@@ -117,10 +152,22 @@ function clicking (){
 
     new Product(names[left], imagePaths[left]);
     displayThreeItems();
+    numClicks[left]++;
 
   });
 }
  
-for (var rounds = 0; rounds < 5; rounds++){
-  clicking();
+displayThreeItems();
+clicking();
+
+
+
+
+function removeListen ()
+{
+  var section = document.getElementById('myP');
+  section.removeEventListener('click', removeListen);
+ 
+
 }
+removeListen()
