@@ -95,29 +95,32 @@ var rightListener = document.getElementById('right');
 
 function clicking (){
 
-  for (var rounds = 0; rounds < 5; rounds++){
-    ///////Event Listener for the Right Image
-    rightListener.addEventListener('click', function(){
-      new Product(names[right], imagePaths[right]);
-      displayThreeItems();
   
-    });
+  ///////Event Listener for the Right Image
+  rightListener.addEventListener('click', function(){
+    new Product(names[right], imagePaths[right]);
+    displayThreeItems();
+  
+  });
 
 
-    ///////Event Listener for the Middle Image
-    middleListener.addEventListener('click', function(){
+  ///////Event Listener for the Middle Image
+  middleListener.addEventListener('click', function(){
 
-      new Product(names[middle], imagePaths[middle]);
-      displayThreeItems();
+    new Product(names[middle], imagePaths[middle]);
+    displayThreeItems();
 
-    });
+  });
 
-    ////////Event Listener for the Left Image
-    leftListener.addEventListener('click', function(){
+  ////////Event Listener for the Left Image
+  leftListener.addEventListener('click', function(){
 
-      new Product(names[left], imagePaths[left]);
-      displayThreeItems();
+    new Product(names[left], imagePaths[left]);
+    displayThreeItems();
 
-    });
-  }}
-clicking();
+  });
+}
+ 
+for (var rounds = 0; rounds < 5; rounds++){
+  clicking();
+}
