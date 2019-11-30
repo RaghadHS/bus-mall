@@ -1,3 +1,7 @@
+////SEPARATED THE LISTENER FUNCTION INTO 
+////THREE DIFFERENT FUNCTIONS AND REMOVED
+////THE CREATION OF NEW PRODUCT
+
 'use strict';
 //////Counter to count the numbber of time the imgaes are displayed
 var imgCount = 0;
@@ -63,14 +67,25 @@ function Product(names, path) {
   this.productName = names;
   this.productPath = path;
 
+
 }
+
+///////ARRAY THAT HAS NAME AND PATH OF PRODUCTS
+var allProducts = [];
+for (var a = 0; a < imagePaths.length; a++){
+  allProducts[a] = new Product(imagePaths[a], names[a]);
+}
+
+
+/////Variables to put image path in
 var right;
 var middle;
 var left;
 
 /////Function to change the images
 function displayThreeItems(){
-  
+  imgCount += 1;
+
   right = getRandomNumber(0,imagePaths.length - 1);
   middle = getRandomNumber(0,imagePaths.length - 1);
   left = getRandomNumber(0,imagePaths.length - 1);
@@ -88,7 +103,8 @@ function displayThreeItems(){
   numViews[right]++;
   numViews[middle]++;
   numViews[left]++;
-  
+
+
   var rightImg = document.getElementById('right');
   rightImg.setAttribute('src', imagePaths[right]);
   rightImg.setAttribute('alt', names[right]);
@@ -100,69 +116,54 @@ function displayThreeItems(){
   var leftImg = document.getElementById('left');
   leftImg.setAttribute('src', imagePaths[left]);
   leftImg.setAttribute('alt', imagePaths[left]);
-
-  listening();
  
 };
 
-////////Try to get initial images
-function startPoint(){
-  right = Math.ceil(Math.random() * imagePaths.length - 1);
-  middle = Math.ceil(Math.random() * imagePaths.length - 1);
-  left = Math.ceil(Math.random() * imagePaths.length - 1);
+displayThreeItems();
+
+
+///////Event Listener for the Right Image)
+rightListener.addEventListener('click', rListening);
+
+function rListening(event){
+  numClicks[right]++;
   displayThreeItems();
 }
+rListening();
+
+///////Event Listener for the Middle Image
+middleListener.addEventListener('click', mListening);
+
+function mListening(event){
+  numClicks[middle]++;
+  displayThreeItems();
+}
+mListening();
+
+////////Event Listener for the Left Image
+leftListener.addEventListener('click', lListening);
+
+function lListening(event){
+  numClicks[left]++;
+  displayThreeItems();
+    
+}
+lListening();
 
 ///////Function to get random numbers
 function getRandomNumber(min,max){
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
-  
-function listening (){
-///////Event Listener for the Right Image
-  rightListener.addEventListener('click', function(){
-    new Product(names[right], imagePaths[right]);
-    displayThreeItems();
-    numClicks[right]++;
-  
-  });
-
-
-  ///////Event Listener for the Middle Image
-  middleListener.addEventListener('click', function(){
-
-    new Product(names[middle], imagePaths[middle]);
-    displayThreeItems();
-    numClicks[middle]++;
-
-  });
-
-  ////////Event Listener for the Left Image
-  leftListener.addEventListener('click', function(){
-
-    new Product(names[left], imagePaths[left]);
-    displayThreeItems();
-    numClicks[left]++;
-
-  });
+function removeListener(){
+  alert('removed');
 }
-/////Function to remove the event listener
-function removeListen ()
-{
-  var section = document.getElementById('right');
-  section.removeEventListener('click',function(){ alert('try');});
- 
-}
-
 ////////////End of Functions////////////
-for (var i = 0; i < 6; i++){
-  startPoint();
-  if (i === 5)
-  {
 
-    removeListen();
-  }
+if (imgCount > 5) {
+  console.log(imgCount);
 
+  rightListener.removeEventListener('click', removeListener);
+  middleListener.removeEventListener('click', removeListener);
+  leftListener.removeEventListener('click', removeListener);
 }
